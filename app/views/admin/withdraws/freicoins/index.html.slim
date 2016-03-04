@@ -1,0 +1,11 @@
+- unless @one_freicoins.empty?
+  .panel.panel-primary
+    .panel-heading: span = t('.one')
+    = render partial: 'table', locals: {freicoins: @one_freicoins}
+- unless @all_freicoins.empty?
+  .panel.panel-success
+    .panel-heading: span = t('.all')
+    = render partial: 'table', locals: {freicoins: @all_freicoins}
+
+- if @all_freicoins.empty? and @one_freicoins.empty?
+  h3.text-info.text-center = t('.empty')

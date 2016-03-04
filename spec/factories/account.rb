@@ -6,6 +6,10 @@ FactoryGirl.define do
 
     factory :account_btc do
       currency :btc
+
+    factory :account_frc do
+      currency :frc
+
     end
   end
 end

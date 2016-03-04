@@ -15,6 +15,7 @@ FactoryGirl.define do
 
     factory :cny_fund_source, traits: [:cny]
     factory :btc_fund_source
+    factory :frc_fund_source
   end
 end
 
