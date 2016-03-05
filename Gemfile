@@ -70,6 +70,7 @@ gem 'carrierwave', '~> 0.10.0'
 gem 'simple_captcha2', require: 'simple_captcha'
 gem 'rest-client', '~> 1.6.8'
 
+
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker', '~> 1.4.3'

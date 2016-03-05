@@ -28,6 +28,7 @@ module Peatio
     config.i18n.available_locales = ['en', 'zh-CN', 'ko']
 
     config.autoload_paths += %W(#{config.root}/lib #{config.root}/lib/extras)
+    puts config.autoload_paths.inspect
 
     #config.assets.precompile += ['bootstrap-datetimepicker.css']
     config.assets.initialize_on_precompile = true
