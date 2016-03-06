@@ -9,6 +9,7 @@ module Worker
 
       currency = payload[:currency]
       address  = CoinRPC[currency].getnewaddress("payment")
+      puts "---- NEW ADDRESS RECEIVED FOR #{currency}: #{address}"
 
       if payment_address.update address: address
         ::Pusher["private-#{payment_address.account.member.sn}"].trigger_async('deposit_address', { type: 'create', attributes: payment_address.as_json})
