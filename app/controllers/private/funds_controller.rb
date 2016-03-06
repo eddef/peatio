@@ -24,9 +24,12 @@ module Private
         next if not account.currency_obj.coin?
 
         if account.payment_addresses.blank?
+          puts "---- No addresses at all"
           account.payment_addresses.create(currency: account.currency)
         else
+          puts "--- Have somethings"
           address = account.payment_addresses.last
+          puts "Address blank" if address.address.blank?
           address.gen_address if address.address.blank?
         end
       end
