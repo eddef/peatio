@@ -68,7 +68,6 @@ gem 'twilio-ruby', '~> 3.11'
 gem 'unread', github: 'peatio/unread'
 gem 'carrierwave', '~> 0.10.0'
 gem 'simple_captcha2', require: 'simple_captcha'
-gem 'rest-client'
 
 
 group :development, :test do

@@ -493,7 +493,6 @@ DEPENDENCIES
   rails-observers
   rbtree
   redis-rails
-  rest-client
   rotp
   rspec-rails
   sass-rails
