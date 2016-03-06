@@ -36,9 +36,11 @@ namespace :solvency do
 
       if proof.coin?
         puts "\n*** Fetching #{type} total assets ***"
-        addresses = Currency.assets('btc')['accounts'].map do |account|
+        addresses = Currency.assets(type)['accounts'].map do |account|
           account['address']
         end.join(',')
+
+        puts "\n*** Addresses for #{type}: #{addresses}"
 
         begin
           doc = open "http://#{type}.blockr.io/api/v1/address/balance/" << addresses, redirect: false
