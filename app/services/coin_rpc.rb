@@ -43,12 +43,7 @@ class CoinRPC
       request.basic_auth @uri.user, @uri.password
       request.content_type = 'application/json'
       request.body = post_body
-      begin
-        http.request(request).body
-      rescue Net::HTTPFatalError => e
-        puts e.inspect
-      end
-
+      http.request(request).body
     rescue Errno::ECONNREFUSED => e
       raise ConnectionRefusedError
     end
