@@ -45,6 +45,7 @@ class CoinRPC
       request.body = post_body
       http.request(request).body
     rescue Errno::ECONNREFUSED => e
+      puts 'Connection Refused'
       raise ConnectionRefusedError
     end
 
