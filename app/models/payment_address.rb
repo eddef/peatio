@@ -11,7 +11,16 @@ class PaymentAddress < ActiveRecord::Base
   def gen_address
     payload = { payment_address_id: id, currency: currency }
     attrs   = { persistent: true }
-    AMQPQueue.enqueue(:deposit_coin_address, payload, attrs)
+
+    # Temp workaround
+    # @todo: investigate why new address rpc call fails on production env when called with AMQPQuee
+    if currency == 'frc'
+      worker = Worker::DepositCoinAddress.new
+      worker.process(payload, nil, nil)
+    else
+      AMQPQueue.enqueue(:deposit_coin_address, payload, attrs)
+    end
+
   end
 
   def memo
