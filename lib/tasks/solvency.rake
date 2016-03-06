@@ -49,11 +49,11 @@ namespace :solvency do
         rescue OpenURI::HTTPRedirect => e
           proof.addresses = []
           addresses.split(',').each do |address|
-            balance = CoinRPC[type].getbalance.to_d
+            balance = CoinRPC[type].getbalance
             proof.addresses.push({
               'address' => address,
-              'balance' => balance,
-              'balance_multisig' => balance
+              'balance' => balance.to_f,
+              'balance_multisig' => balance.to_f
             })
           end
           puts "#{type} is not supported by blockr.io yet. Unable to fetch address balances automatically."
