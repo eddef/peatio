@@ -11,6 +11,8 @@ raise "bindings must be provided." if ARGV.size == 0
 
 Rails.logger = logger = Logger.new "#{root}/log/amqp-daemon.log"
 
+Rails.logger.debug "--- AMQP DAEMON ---"
+
 conn = Bunny.new AMQPConfig.connect
 conn.start
 
