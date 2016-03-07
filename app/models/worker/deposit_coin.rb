@@ -1,7 +1,7 @@
 module Worker
   class DepositCoin
 
-    def process(payload)
+    def process(payload, metadata, delivery_info)
       payload.symbolize_keys!
 
       sleep 0.5 # nothing result without sleep by query gettransaction api
