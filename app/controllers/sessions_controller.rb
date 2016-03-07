@@ -9,7 +9,6 @@ class SessionsController < ApplicationController
   helper_method :require_captcha?
 
   def new
-    redirect_to market_path if current_user.activated?
     @identity = Identity.new
   end
 
