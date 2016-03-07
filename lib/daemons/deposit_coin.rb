@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+# You might want to change this
 ENV["RAILS_ENV"] ||= "development"
 
 root = File.expand_path(File.dirname(__FILE__))
@@ -8,23 +9,26 @@ Dir.chdir(root)
 
 require File.join(root, "config", "environment")
 
-Rails.logger = @logger = Logger.new STDOUT
+EM.run do
+  puts "Daemon started at #{Time.now}"
 
+  Signal.trap("INT")  { EM.stop_event_loop }
+  Signal.trap("TERM") { EM.stop_event_loop }
 
-$running = true
-Signal.trap("TERM") do
-  $running = false
-end
+  worker = Worker::WithdrawCoin.new
 
-while($running) do
-  workers.each do |worker|
-    begin
-      worker.run
-    rescue
-      Rails.logger.error "#{worker.class.name} failed to run: #{$!}"
-      Rails.logger.error $!.backtrace[0,20].join("\n")
+  AMQP.connect(AMQP_CONFIG[:connect]) do |conn|
+    puts "Connected to AMQP broker."
+
+    channel = AMQP::Channel.new conn
+    channel.queue(AMQP_CONFIG[:queue][:deposit_coin_address]).subscribe do |payload|
+      puts "Received: #{payload}"
+      begin
+        worker.process JSON.parse(payload)
+      rescue Exception => e
+        puts "Fatal: #{e}"
+        puts e.backtrace.join("\n")
+      end
     end
   end
-
-  sleep 30
 end
