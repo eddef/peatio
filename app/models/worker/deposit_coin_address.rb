@@ -2,7 +2,7 @@ module Worker
   class DepositCoinAddress
 
     def process(payload, metadata, delivery_info)
-      @logger.debug 'DepositCoinAddress worker fired!'
+      Rails.logger.debug 'DepositCoinAddress worker fired!'
       #payload.symbolize_keys!
       payment_address = PaymentAddress.find payload[:payment_address_id]
       return if payment_address.address.present?
