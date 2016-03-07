@@ -13,7 +13,7 @@ raise "bindings must be provided." if ARGV.size == 0
 
 Rails.logger = logger = Logger.new STDOUT
 
-conn = Bunny.new #AMQPConfig.connect
+conn = Bunny.new AMQPConfig.connect
 conn.start
 
 ch = conn.create_channel
