@@ -25,7 +25,7 @@
                   - if c[:hot] == 'N/A'
                     td.text-right = c[:hot]
                   - else
-                    td.text-right = c[:sum] - c[:hot]
+                    td.text-right = c[:sum].to_f - c[:hot].to_f
                 - else
                   td.text-right N/A
                   td.text-right N/A
