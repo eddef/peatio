@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 require 'rubygems'
 require 'daemons/rails/config'
+require 'logger'
 
 logger = Logger.new "#{root}/log/amqp-daemon.log"
 logger.debug '--- Started deposit_coin_ctl'
