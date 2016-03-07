@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby
 require 'rubygems'
 require 'daemons/rails/config'
-Rails.logger.debug "STARTED DEPOSIT COIN DAEMON CTL"
+
 config = Daemons::Rails::Config.for_controller(File.expand_path(__FILE__))
 
 config[:app_name] = 'peatio:amqp:deposit_coin'
 config[:script]   = "#{File.expand_path('../amqp_daemon.rb', __FILE__)}"
-config[:ARGV]     = ARGV + %w(-- deposit_coin_address deposit_coin)
+config[:ARGV]     = ARGV + %w(-- deposit_coin deposit_coin_address)
 
 Daemons::Rails.run config[:script], config.to_hash
