@@ -5,7 +5,7 @@ module Private
     def index
       #@cny_assets  = Currency.assets('cny')
       @btc_proof   = Proof.current :btc
-      @cny_proof   = Proof.current :cny
+      #@cny_proof   = Proof.current :cny
       @frc_proof   = Proof.current :frc
 
       if current_user
