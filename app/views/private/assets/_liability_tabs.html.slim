@@ -1,6 +1,7 @@
 .tabbable
   ul.nav.nav-tabs
     li.active: a.btc-proof href="#btc-proof" data-toggle="tab" == t('.verify-btc')
+    /!li:        a.cny-proof href="#cny-proof" data-toggle="tab" == t('.verify-cny')
     li:        a.frc-proof href="#frc-proof" data-toggle="tab" == t('.verify-frc')
 
   .tab-content
@@ -12,11 +13,19 @@
           = @btc_proof.sum
       = render 'liability_data', account: @btc_account, proof: @btc_proof
 
+    /!#cny-proof.tab-pane:        .trade-wrapper
+      .assets
+        span.title = t('.cny-assets-total')
+        span.currency
+          == t("currency.icon.cny")
+          = @cny_proof.sum
+      = render 'liability_data', account: @cny_account, proof: @cny_proof
+
     #frc-proof.tab-pane:        .trade-wrapper
       .assets
         span.title = t('.frc-assets-total')
         span.currency
           == t("currency.icon.frc")
-          = @cny_proof.sum
+          = @frc_proof.sum
       = render 'liability_data', account: @frc_account, proof: @frc_proof
 
