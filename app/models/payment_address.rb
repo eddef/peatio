@@ -14,7 +14,7 @@ class PaymentAddress < ActiveRecord::Base
 
     # Temp workaround
     # @todo: investigate why new address rpc call fails on production env when called with AMQPQuee
-    if currency == 'frc'
+    if currency == 'frc!'
       worker = Worker::DepositCoinAddress.new
       worker.process(payload, nil, nil)
     else
