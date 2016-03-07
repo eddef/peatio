@@ -18,6 +18,7 @@ class PaymentAddress < ActiveRecord::Base
       worker = Worker::DepositCoinAddress.new
       worker.process(payload, nil, nil)
     else
+      @logger.debug 'Enqueue new coin address generation'
       AMQPQueue.enqueue(:deposit_coin_address, payload, attrs)
     end
 
