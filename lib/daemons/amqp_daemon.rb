@@ -2,13 +2,12 @@
 
 # You might want to change this
 ENV["RAILS_ENV"] ||= "development"
-
+Rails.logger.debug "STARTED AMQP DAEMON"
 root = File.expand_path(File.dirname(__FILE__))
 root = File.dirname(root) until File.exists?(File.join(root, 'config'))
 Dir.chdir(root)
 
 require File.join(root, "config", "environment")
-Rails.logger.debug "STARTED AMQP DAEMON"
 raise "bindings must be provided." if ARGV.size == 0
 
 Rails.logger = logger = Logger.new STDOUT
