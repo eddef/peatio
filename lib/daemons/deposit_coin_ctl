@@ -2,6 +2,8 @@
 require 'rubygems'
 require 'daemons/rails/config'
 
+logger = Logger.new "#{root}/log/amqp-daemon.log"
+logger.debug '--- Started deposit_coin_ctl'
 config = Daemons::Rails::Config.for_controller(File.expand_path(__FILE__))
 
 config[:app_name] = 'peatio:amqp:deposit_coin'
