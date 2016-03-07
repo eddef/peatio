@@ -9,7 +9,7 @@ Dir.chdir(root)
 require File.join(root, "config", "environment")
 raise "bindings must be provided." if ARGV.size == 0
 
-Rails.logger = logger = Logger.new STDOUT
+Rails.logger = logger = Logger.new "#{root}/log/amqp-daemon.log"
 
 conn = Bunny.new AMQPConfig.connect
 conn.start
