@@ -2,8 +2,8 @@ module Worker
   class DepositCoinAddress
 
     def process(payload, metadata, delivery_info)
+      puts 'DepositCoinAddress worker fired!'
       #payload.symbolize_keys!
-      byebug
       payment_address = PaymentAddress.find payload[:payment_address_id]
       return if payment_address.address.present?
 
