@@ -15,16 +15,27 @@ EM.run do
   Signal.trap("INT")  { EM.stop_event_loop }
   Signal.trap("TERM") { EM.stop_event_loop }
 
-  worker = Worker::WithdrawCoin.new
+  worker1 = Worker::DepositCoin.new
+  worker2 = Worker::DepositCoinAddress.new
 
   AMQP.connect(AMQP_CONFIG[:connect]) do |conn|
     puts "Connected to AMQP broker."
 
     channel = AMQP::Channel.new conn
+    channel.queue(AMQP_CONFIG[:queue][:deposit_coin]).subscribe do |payload|
+      puts "Received: #{payload}"
+      begin
+        worker1.process JSON.parse(payload)
+      rescue Exception => e
+        puts "Fatal: #{e}"
+        puts e.backtrace.join("\n")
+      end
+    end
+
     channel.queue(AMQP_CONFIG[:queue][:deposit_coin_address]).subscribe do |payload|
       puts "Received: #{payload}"
       begin
-        worker.process JSON.parse(payload)
+        worker2.process JSON.parse(payload)
       rescue Exception => e
         puts "Fatal: #{e}"
         puts e.backtrace.join("\n")
