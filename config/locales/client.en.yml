@@ -1,4 +1,5 @@
 en:
+  version: "0.0.1"
   js:
     brand: Peatio
     submit: Submit
