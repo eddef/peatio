@@ -66,7 +66,7 @@ en:
 
       deposit_btc:
         title: BTC Deposit
-      deposit_FRC:
+      deposit_frc:
         title: FRC Deposit
       deposit_coin:
         address: Address
