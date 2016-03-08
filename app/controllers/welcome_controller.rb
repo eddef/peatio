@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
   layout 'landing'
+  helper_method :require_captcha?
 
   def index
     if current_user
