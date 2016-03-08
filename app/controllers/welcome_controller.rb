@@ -1,4 +1,4 @@
-class WelcomeController < ApplicationController
+class WelcomeController < SessionsController
   layout 'landing'
   helper_method :require_captcha?
 
