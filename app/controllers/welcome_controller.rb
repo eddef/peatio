@@ -5,5 +5,7 @@ class WelcomeController < ApplicationController
     if current_user
       redirect_to settings_url
     end
+
+    @identity = Identity.new
   end
 end
