@@ -17,7 +17,7 @@ header.text-center
           ul.list-unstyled
             li: a href='#{new_reset_password_path}' = t('.reset_password')
             li: a href='#{signup_path}' = t('header.signup')
-    = current_gon.to_json
+    = current_gon.gon.to_json
     /!section
       - current_gon.gon.tickers.each do |ticker|
         div.row
