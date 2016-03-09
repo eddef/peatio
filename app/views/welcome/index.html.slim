@@ -23,12 +23,12 @@ header.text-center
           div.col-xs-6.col-md-3
             div.thumbnail
               div.caption
-                = ticker[1].name
+                = ticker[1][:name]
               div Last Price
               div
                 strong
-                  = ticker[1].last
+                  = ticker[1][:last]
               div Volume
               div
                 strong
-                  = ticker[1].volume
+                  = ticker[1][:volume]
