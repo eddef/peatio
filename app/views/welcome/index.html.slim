@@ -11,11 +11,11 @@ header.text-center
               - if require_captcha?
                 = f.input :captcha, required: true, label: t('simple_form.labels.session.captcha') do
                   = show_simple_captcha
-              = f.button :wrapped, t('header.signin')
-
-              ul.list-unstyled
-                li: a href='#{new_reset_password_path}' = t('.reset_password')
-                li: a href='#{signup_path}' = t('header.signup')
+              = f.button :wrapped, t('header.signin'), class: "wide-button"
+              div
+                a href='#{new_reset_password_path}' = t('.reset_password')
+                span= ' • '
+                a href='#{signup_path}' = t('header.signup')
     section
       - current_gon.gon['tickers'].each do |ticker|
         div.row
