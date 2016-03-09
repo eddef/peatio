@@ -22,15 +22,15 @@ header.text-center
         h2.text-center Price Overview
         div.row
           div.col-xs-12.col-md-6
-        - current_gon.gon['tickers'].each do |ticker|
-          div.thumbnail.white
-            div.caption
-              = ticker[1][:name]
-            div Last Price
-            div
-              strong
-                = ticker[1][:last]
-            div Volume
-            div
-              strong
-                = ticker[1][:volume]
+          - current_gon.gon['tickers'].each do |ticker|
+            div.thumbnail.white
+              div.caption
+                = ticker[1][:name]
+              div Last Price
+              div
+                strong
+                  = ticker[1][:last]
+              div Volume
+              div
+                strong
+                  = ticker[1][:volume]
