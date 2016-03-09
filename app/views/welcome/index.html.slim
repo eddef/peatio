@@ -17,16 +17,15 @@ header.text-center
           ul.list-unstyled
             li: a href='#{new_reset_password_path}' = t('.reset_password')
             li: a href='#{signup_path}' = t('header.signup')
-    = current_gon.gon['tickers'].to_json
-    /!section
-      - current_gon.gon.tickers.each do |ticker|
+    section
+      - current_gon.gon['tickers'].each do |ticker|
         div.row
           div.col-xs-6.col-md-3
             div.thumbnail
               div.caption
-                = ticker.name
+                = ticker['name']
               div Last Price
               div
-                = ticker.last
+                = ticker['last']
               div Volume
-                = ticker.volume
+                = ticker['volume']
