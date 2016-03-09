@@ -23,12 +23,12 @@ header.text-center
           div.col-xs-6.col-md-3
             div.thumbnail
               div.caption
-                = ticker.flatten.name
+                = ticker.flatten['name']
               div Last Price
               div
                 strong
-                  = ticker.flatten.last
+                  = ticker.flatten['last']
               div Volume
               div
                 strong
-                  = ticker.flatten.volume
+                  = ticker.flatten['volume']
