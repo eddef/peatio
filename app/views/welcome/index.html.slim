@@ -23,10 +23,10 @@ header.text-center
           div.col-xs-6.col-md-3
             div.thumbnail
               div.caption
-                = ticker.name
+                = ticker['name'].to_s
               div Last Price
               div
-                = ticker['last']
+                = ticker['last'].to_s
               div Volume
               div
-                = ticker['volume']
+                = ticker['volume'].to_s
