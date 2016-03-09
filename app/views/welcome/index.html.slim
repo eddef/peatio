@@ -18,4 +18,4 @@ header.text-center
             li: a href='#{new_reset_password_path}' = t('.reset_password')
             li: a href='#{signup_path}' = t('header.signup')
     section
-      = current_gon.gon.inspect
+      = current_gon.gon.to_json
