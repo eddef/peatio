@@ -21,7 +21,10 @@ html lang="en"
       - else
         = render 'shared/header'
 
-      = yield(:frame)
+      - if content_for?(:frame)
+        = yield(:frame)
+      - else
+        = render 'shared/frame'
 
       #push
 
