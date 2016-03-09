@@ -9,7 +9,7 @@ html lang="en"
     = render 'shared/html5'
     = render 'shared/meta'
     = csrf_meta_tags
-  body id='#{body_id}' data-lang="#{locale_name}"
+  body id='#{body_id}' data-lang="#{locale_name}" class="background"
     #wrap
       = render 'shared/alert'
       = yield

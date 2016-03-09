@@ -165,4 +165,10 @@ form.simple_form {
   background-color: white;
 }
 
+body.background {
+  background-image: url('/images/bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 @import 'layouts/custom';
