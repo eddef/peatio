@@ -7,10 +7,10 @@
     - if current_user
       div data-scroll-index=0 = render 'liability_proof'
     -@currencies.each do |idx, currency|
-      -if currency.coin
-        div data-scroll-index=idx = render 'coin_assets', code: currency.code, proof: @proofs[currency.code]
+      -if currency[:coin]
+        div data-scroll-index=idx = render 'coin_assets', code: currency[:code], proof: @proofs[currency[:code]]
       -else
-        div data-scroll-index=idx = render 'fiat_assets', code: currency.code
+        div data-scroll-index=idx = render 'fiat_assets', code: currency[:code]
 
     /!- if current_user
       /!div data-scroll-index=0 = render 'liability_proof'
