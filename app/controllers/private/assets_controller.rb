@@ -21,17 +21,6 @@ module Private
         end
       end
 
-      #@cny_assets  = Currency.assets('cny')
-      #@cny_proof   = Proof.current :cny
-
-      @btc_proof   = Proof.current :btc
-      @frc_proof   = Proof.current :frc
-
-      if current_user
-        @btc_account = current_user.accounts.with_currency(:btc).first
-        #@cny_account = current_user.accounts.with_currency(:cny).first
-        @frc_account = current_user.accounts.with_currency(:frc).first
-      end
     end
 
     def partial_tree
