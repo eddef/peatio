@@ -7,7 +7,7 @@ app.controller 'WithdrawsController', ['$scope', '$stateParams', '$http', '$gon'
     return false
 
   $scope.currency = currency = $stateParams.currency
-  $scope.fiat_currency = $gon.fiat_currency ? 'true' : 'false'
+  $scope.fiat_currency = $gon.fiat_currency
   $scope.current_user = current_user = $gon.current_user
   $scope.name = current_user.name
   $scope.account = Account.findBy('currency', $scope.currency)

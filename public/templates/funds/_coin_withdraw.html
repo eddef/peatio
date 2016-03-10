@@ -1,4 +1,9 @@
-<form id="btc_withdraw" class="form form-horizontal" ng-controller="WithdrawsController as withdrawsCtrl" ng-submit="withdrawsCtrl.createWithdraw(currency)">
+<h2 class="panel-title">{{"funds.withdraw_"+currency+".title" | t}}</h2>
+<p class="help-block">
+  {{"funds.withdraw_coin.intro" | t}}
+</p>
+
+<form id="{{ currency }}_withdraw" class="form form-horizontal" ng-controller="WithdrawsController as withdrawsCtrl" ng-submit="withdrawsCtrl.createWithdraw(currency)">
 
   <div class="form-group">
     <div class="col-sm-6">
