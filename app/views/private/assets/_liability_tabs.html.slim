@@ -15,28 +15,3 @@
                 == t("currency.icon.#{currency[:code]}")
                 = @proofs[currency[:code]].sum
             = render 'liability_data', account: @accounts[currency[:code]], proof: @proofs[currency[:code]]
-  /!div
-    #btc-proof.tab-pane.active: .trade-wrapper
-      .assets
-        span.title = t('.btc-assets-total')
-        span.currency
-          == t("currency.icon.btc")
-          = @btc_proof.sum
-      = render 'liability_data', account: @btc_account, proof: @btc_proof
-
-    /!#cny-proof.tab-pane:        .trade-wrapper
-      .assets
-        span.title = t('.cny-assets-total')
-        span.currency
-          == t("currency.icon.cny")
-          = @cny_proof.sum
-      = render 'liability_data', account: @cny_account, proof: @cny_proof
-
-    #frc-proof.tab-pane:        .trade-wrapper
-      .assets
-        span.title = t('.frc-assets-total')
-        span.currency
-          == t("currency.icon.frc")
-          = @frc_proof.sum
-      = render 'liability_data', account: @frc_account, proof: @frc_proof
-
