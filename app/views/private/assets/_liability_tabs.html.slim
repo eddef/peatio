@@ -7,13 +7,14 @@
   .tab-content
     - @currencies.each_with_index do |currency, index|
       div id=("#{currency[:code]}-proof") class=(index == 0 ? 'tab-pane active' : 'tab-pane')
-        .trade-wrapper
-          .assets
-            span.title = t(".#{currency[:code]}-assets-total")
-            span.currency
-              == t("currency.icon.#{currency[:code]}")
-              = @proofs[currency[:code]].inspect
-          = render 'liability_data', account: @accounts[currency[:code]], proof: @proofs[currency[:code]] unless @proofs[currency[:code]].nil?
+        - unless @proofs[currency[:code]].nil?
+          .trade-wrapper
+            .assets
+              span.title = t(".#{currency[:code]}-assets-total")
+              span.currency
+                == t("currency.icon.#{currency[:code]}")
+                = @proofs[currency[:code]].inspect
+            = render 'liability_data', account: @accounts[currency[:code]], proof: @proofs[currency[:code]]
   /!div
     #btc-proof.tab-pane.active: .trade-wrapper
       .assets
