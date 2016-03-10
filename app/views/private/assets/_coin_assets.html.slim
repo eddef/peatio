@@ -11,7 +11,7 @@
               span.pull-left = t('.total', currency: code)
               span.pull-right
                 == t("currency.icon.#{code}")
-                = proof.asset_sum
+                = proof.asset_sum unless proof.nil?
           .clearfix
           .row
             table.table
@@ -21,10 +21,11 @@
                     = t('.address')
                   td
                     = t('.balance')
-              tbody
-                - proof.addresses.each do |entry|
-                  tr
-                    td
-                      = link_to entry['address'], proof.address_url(entry['address'])
-                    td
-                      = entry['balance']
+              -unless proof.nil?
+                tbody
+                  - proof.addresses.each do |entry|
+                    tr
+                      td
+                        = link_to entry['address'], proof.address_url(entry['address'])
+                      td
+                        = entry['balance']
