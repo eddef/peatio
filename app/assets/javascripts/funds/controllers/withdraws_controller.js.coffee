@@ -6,6 +6,9 @@ app.controller 'WithdrawsController', ['$scope', '$stateParams', '$http', '$gon'
       return true if fs.id is _selectedFundSourceId
     return false
 
+  console.log Currency.all()
+
+
   $scope.currency = currency = $stateParams.currency
   $scope.current_user = current_user = $gon.current_user
   $scope.name = current_user.name
@@ -41,7 +44,6 @@ app.controller 'WithdrawsController', ['$scope', '$stateParams', '$http', '$gon'
     $scope.selected_fund_source_id defaultFundSource.id if defaultFundSource
 
   @withdraw = {}
-  $scope.currencies = $gon.currencies
   @createWithdraw = (currency) ->
     withdraw_channel = WithdrawChannel.findBy('currency', currency)
     account = withdraw_channel.account()
