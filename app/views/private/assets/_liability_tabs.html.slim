@@ -1,19 +1,19 @@
 .tabbable
   ul.nav.nav-tabs
-    - currencies.each_with_index do |currency, index|
+    - @currencies.each_with_index do |currency, index|
       li class=(index == 0 ? 'active' : 'inactive')
         a class=("#{currency[:code]}-proof") href="##{currency[:code]}-proof" data-toggle="tab" == t(".verify-#{currency[:code]}")
 
   .tab-content
-    - currencies.each_with_index do |currency, index|
+    - @currencies.each_with_index do |currency, index|
       div id=("#{currency[:code]}-proof") class=(index == 0 ? 'tab-pane active' : 'tab-pane')
         .trade-wrapper
           .assets
             span.title = t(".#{currency[:code]}-assets-total")
             span.currency
               == t("currency.icon.#{currency[:code]}")
-              = proofs[currency[:code]].sum
-          = render 'liability_data', account: @accounts[currency[:code]], proof: proofs[currency[:code]]
+              = @proofs[currency[:code]].sum
+          = render 'liability_data', account: @accounts[currency[:code]], proof: @proofs[currency[:code]]
   /!div
     #btc-proof.tab-pane.active: .trade-wrapper
       .assets
