@@ -2,7 +2,7 @@ module APIv2
   class Currencies < Grape::API
 
     desc 'Retrieve currencies list'
-    get "/" do
+    get "/currencies" do
       Currency.all.map { |currency| currency.code }
     end
 
