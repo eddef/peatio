@@ -6,6 +6,7 @@ app.controller 'WithdrawsController', ['$scope', '$stateParams', '$http', '$gon'
       return true if fs.id is _selectedFundSourceId
     return false
 
+  $scope.gon = $window.gon;
   $scope.currency = currency = $stateParams.currency
   $scope.current_user = current_user = $gon.current_user
   $scope.name = current_user.name
