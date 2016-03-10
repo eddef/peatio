@@ -11,7 +11,7 @@
           .assets
             span.title = t(".#{currency[:code]}-assets-total")
             span.currency
-              == t("currency.icon.#{currency[:code]})
+              == t("currency.icon.#{currency[:code]}")
               = proofs[currency[:code]].sum
           = render 'liability_data', account: @accounts[currency[:code]], proof: proofs[currency[:code]]
   /!div
