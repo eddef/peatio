@@ -2,10 +2,10 @@
   .container
     ul.nav.nav-justified.assets-nav
       - if current_user
-        li data-scroll-nav=0
+        li.active data-scroll-nav=0
           a = t('.liability-proof')
       -@currencies.each_with_index do |currency, idx|
-        li data-scroll-nav=idx
+        li data-scroll-nav=idx class=(not current_user && idx == 1 ? 'active' : 'inactive')
           a = t(".#{currency[:code]}-assets")
 
     - if current_user
