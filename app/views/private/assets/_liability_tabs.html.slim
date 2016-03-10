@@ -2,7 +2,7 @@
   ul.nav.nav-tabs
     - currencies.each_with_index do |currency, index|
       li class=(index == 0 ? 'active' : 'inactive')
-        a class=("#{currency[:code]}-proof") href='"##{currency[:code]}-proof"' data-toggle="tab" == t(".verify-#{currency[:code]}")
+        a class=("#{currency[:code]}-proof") href="##{currency[:code]}-proof" data-toggle="tab" == t(".verify-#{currency[:code]}")
 
   .tab-content
     #btc-proof.tab-pane.active: .trade-wrapper
