@@ -12,15 +12,8 @@ class PaymentAddress < ActiveRecord::Base
     payload = { payment_address_id: id, currency: currency }
     attrs   = { persistent: true }
 
-    # Temp workaround
-    # @todo: investigate why new address rpc call fails on production env when called with AMQPQuee
-    if currency == 'frc!'
-      worker = Worker::DepositCoinAddress.new
-      worker.process(payload, nil, nil)
-    else
-      Rails.logger.debug 'Enqueue new coin address generation'
-      AMQPQueue.enqueue(:deposit_coin_address, payload, attrs)
-    end
+    Rails.logger.debug 'Enqueue new coin address generation'
+    AMQPQueue.enqueue(:deposit_coin_address, payload, attrs)
 
   end
 
