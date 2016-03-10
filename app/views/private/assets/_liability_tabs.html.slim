@@ -12,8 +12,8 @@
             span.title = t(".#{currency[:code]}-assets-total")
             span.currency
               == t("currency.icon.#{currency[:code]}")
-              = @proofs[currency[:code]].sum
-          = render 'liability_data', account: @accounts[currency[:code]], proof: @proofs[currency[:code]]
+              = @proofs[currency[:code]].inspect
+          /!= render 'liability_data', account: @accounts[currency[:code]], proof: @proofs[currency[:code]]
   /!div
     #btc-proof.tab-pane.active: .trade-wrapper
       .assets
