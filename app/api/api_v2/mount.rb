@@ -25,6 +25,7 @@ module APIv2
       header 'Access-Control-Allow-Origin', '*'
     end
 
+    mount Currencies
     mount Markets
     mount Tickers
     mount Members
