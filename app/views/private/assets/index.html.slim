@@ -1,12 +1,13 @@
 = content_for :frame do
   .container
     ul.nav.nav-justified.assets-nav
-      -@currencies.each do |idx, currency|
+      -@currencies.each_with_index do |currency, idx|
         li data-scroll-nav=idx
+          a = t(".#{currency[:code]}-assets")
 
     - if current_user
       div data-scroll-index=0 = render 'liability_proof'
-    -@currencies.each do |idx, currency|
+    -@currencies.each_with_index do |currency, idx|
       -if currency[:coin]
         div data-scroll-index=idx = render 'coin_assets', code: currency[:code], proof: @proofs[currency[:code]]
       -else
