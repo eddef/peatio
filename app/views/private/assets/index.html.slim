@@ -1,8 +1,9 @@
 = content_for :frame do
   .container
     ul.nav.nav-justified.assets-nav
-      li data-scroll-nav=0
-        a = t('.liability-proof') if current_user
+      - if current_user
+        li data-scroll-nav=0
+          a = t('.liability-proof')
       -@currencies.each_with_index do |currency, idx|
         li data-scroll-nav=idx
           a = t(".#{currency[:code]}-assets")
