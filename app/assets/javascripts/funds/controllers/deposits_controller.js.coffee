@@ -1,5 +1,6 @@
 app.controller 'DepositsController', ['$scope', '$stateParams', '$http', '$filter', '$gon', 'ngDialog', ($scope, $stateParams, $http, $filter, $gon, ngDialog) ->
   @deposit = {}
+  $scope.fiat_currency = $gon.fiat_currency
   $scope.currency = $stateParams.currency
   $scope.current_user = current_user = $gon.current_user
   $scope.name = current_user.name
