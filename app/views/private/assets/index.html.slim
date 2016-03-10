@@ -1,20 +1,19 @@
 = content_for :frame do
   .container
     ul.nav.nav-justified.assets-nav
-      li.active data-scroll-nav='0'
-        a = t('.liability-proof')
-      li        data-scroll-nav='1'
-        a = t('.btc-assets')
-      /!li        data-scroll-nav='2'
-        a = t('.cny-assets')
-      li        data-scroll-nav='3'
-        a = t('.frc-assets')
-
+      -@currencies.each do |idx, currency|
+        li data-scroll-nav=idx
 
     - if current_user
       div data-scroll-index=0 = render 'liability_proof'
+    -@currencies.each do |idx, currency|
+      -if currency.coin
+        div data-scroll-index=idx = render 'coin_assets', code: currency.code, proof: @proofs[currency.code]
+      -else
+        div data-scroll-index=idx = render 'fiat_assets', code: currency.code
+      -end
 
-    div data-scroll-index=1 = render 'btc_assets'
-    /!div data-scroll-index=2 = render 'cny_assets'
-    div data-scroll-index=3 = render 'frc_assets'
-
+    /!- if current_user
+      /!div data-scroll-index=0 = render 'liability_proof'
+    /!div data-scroll-index=1 = render 'btc_assets'
+    /!div data-scroll-index=3 = render 'frc_assets'

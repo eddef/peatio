@@ -1,0 +1,30 @@
+.panel.panel-default
+  .panel-body
+    .row
+      #guide.col-xs-8
+        h3 = t('.title', currency: code)
+        p.text-ignore = t('.intro', currency: code)
+      #content.col-xs-16
+        .jumbotron
+          .row
+            .col-xs-offset-4.col-xs-16
+              span.pull-left = t('.total', currency: code)
+              span.pull-right
+                == t("currency.icon.#{code}")
+                = proof.asset_sum
+          .clearfix
+          .row
+            table.table
+              thead
+                tr
+                  td
+                    = t('.address')
+                  td
+                    = t('.balance')
+              tbody
+                - proof.addresses.each do |entry|
+                  tr
+                    td
+                      = link_to entry['address'], proof.address_url(entry['address'])
+                    td
+                      = entry['balance']

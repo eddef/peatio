@@ -3,9 +3,28 @@ module Private
     skip_before_action :auth_member!, only: [:index]
 
     def index
+      @proofs = {}
+      @accounts = {}
+      @currencies = []
+
+      Currency.all.map do |currency|
+        code = currency.code.to_sym
+
+        @proofs[currency.code] = Proof.current code
+        @currencies.push ({
+            code: currency.code,
+            coin: currency.coin?
+        })
+
+        if current_user
+          @accounts[currency.code] = current_user.accounts.with_currency(code).first
+        end
+      end
+
       #@cny_assets  = Currency.assets('cny')
-      @btc_proof   = Proof.current :btc
       #@cny_proof   = Proof.current :cny
+
+      @btc_proof   = Proof.current :btc
       @frc_proof   = Proof.current :frc
 
       if current_user

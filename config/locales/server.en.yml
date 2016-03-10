@@ -700,6 +700,11 @@ en:
         get-partial-tree: Get my partial tree data
         timestamp: The proof data is generated at %{time}.
         go-verify: Verify
+      coin_assets:
+        title: "%{currency} Assets"
+        intro: "All of exchange's %{currency} assets are listed here."
+        total: "Total %{currency} Assets"
+        address: Address
       btc_assets:
         title: BTC Assets
         intro: All of exchange's BTC assets are listed here.
