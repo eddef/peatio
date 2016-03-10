@@ -13,7 +13,7 @@
             span.currency
               == t("currency.icon.#{currency[:code]}")
               = @proofs[currency[:code]].inspect
-          /!= render 'liability_data', account: @accounts[currency[:code]], proof: @proofs[currency[:code]]
+          = render 'liability_data', account: @accounts[currency[:code]], proof: @proofs[currency[:code]] unless @proofs[currency[:code]].nil?
   /!div
     #btc-proof.tab-pane.active: .trade-wrapper
       .assets
