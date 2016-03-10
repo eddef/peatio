@@ -3,7 +3,7 @@ module APIv2
 
     desc 'Retrieve currencies list'
     get "/currencies" do
-      Currency.all.map { |currency| currency.code }
+      present Currency.all, with: APIv2::Entities::Currency
     end
 
   end
