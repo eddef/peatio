@@ -6,7 +6,7 @@ app.controller 'WithdrawsController', ['$scope', '$stateParams', '$http', '$gon'
       return true if fs.id is _selectedFundSourceId
     return false
 
-  console.log Currency.all()
+  console.dir Currency.all(), 'test'
 
 
   $scope.currency = currency = $stateParams.currency
