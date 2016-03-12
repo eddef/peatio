@@ -17,4 +17,8 @@ class DepositChannel < ActiveYaml::Base
   def as_json(options = {})
     super(options)['attributes'].merge({resource_name: key.pluralize})
   end
+
+  def <=>(other)
+    self.sort_order <=> other.sort_order
+  end
 end
