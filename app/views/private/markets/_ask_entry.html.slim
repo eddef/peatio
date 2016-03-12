@@ -18,5 +18,5 @@
         span.input-group-addon = t(market.bid['currency'], scope: 'market.currency')
       = render partial: 'balance', locals: {currency: t(market.ask['currency'], scope: 'market.currency')}
 
-      button.btn.btn-danger.btn-block.text-down type="submit" = t('.action', currency: t(market.bid['currency'], scope: 'market.currency'))
+      button.btn.btn-danger.btn-block.text-down type="submit" = t('.action', currency: t(market.ask['currency'], scope: 'market.currency'))
   = render partial: 'mask'
