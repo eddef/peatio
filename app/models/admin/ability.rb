@@ -5,6 +5,8 @@ module Admin
     def initialize(user)
       return unless user.admin?
 
+      classnames = Deposits.constants.select { |cl| not cl.to_s.include? 'able' }
+
       can :read, Order
       can :read, Trade
       can :read, Proof
@@ -16,12 +18,12 @@ module Admin
       can :manage, TwoFactor
 
       can :menu, Deposit
-      can :manage, ::Deposits::Satoshi
-      can :manage, ::Deposits::Freicoin
-
       can :menu, Withdraw
-      can :manage, ::Withdraws::Satoshi
-      can :manage, ::Withdraws::Freicoin
+
+      classnames.each do |classname|
+        can :manage, ::Deposits::const_get(classname)
+        can :manage, ::Withdraws::const_get(classname)
+      end
     end
   end
 end
