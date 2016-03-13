@@ -44,7 +44,7 @@ class Market < ActiveYamlBase
   # type is :ask or :bid
   def fix_number_precision(type, d)
     digits = send(type)['fixed']
-    d.round digits, 2
+    d.round digits, 8
   end
 
   # shortcut of global access
