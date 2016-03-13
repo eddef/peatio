@@ -20,6 +20,9 @@ module Admin
       can :menu, Deposit
       can :menu, Withdraw
 
+      can :manage, Deposits
+      can :manage, Withdraws
+
       classnames.each do |classname|
         can :manage, Deposits::const_get(classname)
         can :manage, Withdraws::const_get(classname)
