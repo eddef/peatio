@@ -30,8 +30,8 @@ html lang="en"
                 span = t('admin_header.deposits')
                 span.caret
               ul.dropdown-menu
-                - if can? :manage, ::Deposits
-                  - DepositChannel.all.sort.each do |c|
+                - DepositChannel.all.sort.each do |c|
+                  - if can? :manage, c.kls
                     li = link_to c.title_text, [:admin, c.kls]
 
           - if can? :menu, Withdraw
@@ -40,8 +40,8 @@ html lang="en"
                 span = t('admin_header.withdraws')
                 span.caret
               ul.dropdown-menu
-                - if can? :manage, ::Withdraws
-                  - WithdrawChannel.all.each do |c|
+                - WithdrawChannel.all.each do |c|
+                  - if can? :manage, c.kls
                     li = link_to c.title_text, [:admin, c.kls]
 
           - if can? :manage, Member
