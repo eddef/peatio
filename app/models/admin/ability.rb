@@ -18,9 +18,8 @@ module Admin
       can :menu, Deposit
       can :menu, Withdraw
 
-      klassnames = Deposits.constants.select { |cl| not (cl.to_s.include? 'able' or cl.to_s.include? 'Controller') }
+      klassnames = ::Deposits.constants.select { |cl| not (cl.to_s.include? 'able' or cl.to_s.include? 'Controller') }
       klassnames.each do |klassname|
-        puts "--------------------------------------- #{klassname}"
         can :manage, "::Deposits::#{klassname}".constantize
         can :manage, "::Withdraws::#{klassname}".constantize
       end
