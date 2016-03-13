@@ -24,8 +24,8 @@ module Admin
       can :manage, ::Withdraws
 
       classnames.each do |classname|
-        can :manage, ::Deposits::const_get(classname)
-        can :manage, ::Withdraws::const_get(classname)
+        can :manage, "Withdraws::#{classname}".constantize
+        can :manage, "Deposits::#{classname}".constantize
       end
     end
   end
