@@ -21,8 +21,8 @@ module Admin
       can :menu, Withdraw
 
       classnames.each do |classname|
-        can :manage, ::Deposits::const_get(classname)
-        can :manage, ::Withdraws::const_get(classname)
+        can :manage, Deposits::const_get(classname)
+        can :manage, Withdraws::const_get(classname)
       end
     end
   end
