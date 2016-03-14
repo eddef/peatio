@@ -1,5 +1,5 @@
 = "Withdraws::#{currency.capitalize}".constantize
-= table_for(satoshis, class: 'table table-condensed table-hover', model: "Withdraws::#{currency.capitalize}".constantize) do |t|
+/!= table_for(satoshis, class: 'table table-condensed table-hover', model: "Withdraws::#{currency.capitalize}".constantize) do |t|
   - t.column :id, class: 'col-xs-2'
   - t.column :created_at, class: 'col-xs-3'
   - t.column :currency_obj_key_text, class: 'col-xs-2'
