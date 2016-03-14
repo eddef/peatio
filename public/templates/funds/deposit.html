@@ -1,2 +1,2 @@
 <ng-include src="'/templates/funds/_flash.html'"></ng-include>
-<ng-include src="fiat_currency ? '/templates/funds/_fiat_deposit.html' : '/templates/funds/_coin_deposit.html'"></ng-include>
+<ng-include src="fiat_currency == currency ? '/templates/funds/_fiat_deposit.html' : '/templates/funds/_coin_deposit.html'"></ng-include>
