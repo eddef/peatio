@@ -22,12 +22,16 @@ namespace :admin do
   end
 
   namespace :deposits do
+    resources :coins
+    resources :fiats
     Deposit.descendants.each do |d|
       resources d.resource_name
     end
   end
 
   namespace :withdraws do
+    resources :coins
+    resources :fiats
     Withdraw.descendants.each do |w|
       resources w.resource_name
     end
