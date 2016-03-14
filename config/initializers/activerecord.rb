@@ -46,7 +46,6 @@ Currency.all.each do |currency|
   if currency.coin?
 
     klass = Class.new Coindeposit
-    raise klass.ancestors.inspect
     Deposits.const_set currency.key.capitalize, klass
 
     klass = Class.new Coinwithdraw
