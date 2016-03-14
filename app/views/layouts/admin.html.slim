@@ -43,7 +43,7 @@ html lang="en"
                 - WithdrawChannel.all.each do |c|
                   - if can? :manage, c.kls
                     /!li = link_to c.title_text, [:admin, c.kls]
-                    li = link_to c.title_text, [:admin, :withdraws, :coin]
+                    li = link_to c.title_text, [:admin, :withdraws, :coins], type: c.currency
 
           - if can? :manage, Member
             li class = check_active('members')

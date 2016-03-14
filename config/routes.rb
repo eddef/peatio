@@ -75,6 +75,7 @@ Peatio::Application.routes.draw do
     end
 
     namespace :withdraws do
+      resources :coins
       Withdraw.descendants.each do |w|
         resources w.resource_name
       end
