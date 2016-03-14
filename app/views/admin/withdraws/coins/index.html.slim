@@ -1,11 +1,11 @@
 - unless @one_coin.empty?
   .panel.panel-primary
-    .panel-heading: span = t('.one')
+    .panel-heading: span = t('admin.withdraws.one_coin')
     = render partial: 'table', locals: {coins: @one_coin, currency: @currency}
 - unless @all_coins.empty?
   .panel.panel-success
-    .panel-heading: span = t('.all')
+    .panel-heading: span = t('admin.withdraws.all_coin')
     = render partial: 'table', locals: {coins: @all_coins, currency: @currency}
 
 - if @all_coins.empty? and @one_coin.empty?
-  h3.text-info.text-center = t('.empty')
+  h3.text-info.text-center = t('admin.withdraws.empty_coin')

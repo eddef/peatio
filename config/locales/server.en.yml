@@ -1264,18 +1264,15 @@ en:
           reject_confirm: Confirm Reject?
           withdraw: Withdraw
           empty: No Data
-      satoshis:
-        index:
-          one: Pending withdrawals
-          all: Last 24 hours
-          empty: No data
-        show:
-          process: Accepted
-          succeed: Withdraw
-          reject: Reject
-          succeed_confirm: Process withdrawal?
-          reject_confirm: Reject withdrawal?
-          withdraw: Withdrawals
+      one_coin: Pending withdrawals
+      all_coin: Last 24 hours
+      empty_coin: No data
+      process_coin: Accepted
+      succeed_coin: Withdraw
+      reject_coin: Reject
+      succeed_confirm_coin: Process withdrawal?
+      reject_confirm_coin: Reject withdrawal?
+      withdraw: Withdrawals
   deposits/satoshi:
     aasm_state:
       submitted: Submitted
