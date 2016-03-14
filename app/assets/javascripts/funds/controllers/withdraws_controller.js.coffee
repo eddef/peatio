@@ -1,4 +1,4 @@
-app.controller 'WithdrawsController', ['$scope', '$stateParams', '$http', '$gon', 'fundSourceService', 'ngDialog', 'Currency', ($scope, $stateParams, $http, $gon, fundSourceService, ngDialog, Currency) ->
+app.controller 'WithdrawsController', ['$scope', '$stateParams', '$http', '$gon', 'fundSourceService', 'ngDialog', ($scope, $stateParams, $http, $gon, fundSourceService, ngDialog) ->
 
   _selectedFundSourceId = null
   _selectedFundSourceIdInList = (list) ->
