@@ -7,7 +7,7 @@ module Admin
       before_action :find_withdraws, only: [:index]
 
       def channel
-        @channel ||= WithdrawChannel.find_by_key(self.controller_name.singularize)
+        @channel ||= WithdrawChannel.find_by_key(params[:type])
       end
 
       def kls
@@ -15,7 +15,7 @@ module Admin
       end
 
       def find_withdraw
-        @coin = kls.find(params[:id])
+        @coin = channel.kls.find(params[:id])
 
         if @coin.may_process? and (@coin.amount > @coin.account.locked)
           flash[:alert] = 'TECH ERROR !!!!'
