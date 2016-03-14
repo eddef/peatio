@@ -1,7 +1,7 @@
 module Admin
   module Deposits
     class CoinsController < ::Admin::BaseController
-      #load_and_authorize_resource :class => '::Deposits::Satoshi'
+      load_and_authorize_resource :class => "::Deposits::#{params[:type].capitalize}".constantize
 
       before_action :find_deposits, only: [:index]
       before_action :find_deposit, only: [:show, :update]
@@ -28,6 +28,7 @@ module Admin
         @coins = @coins.includes(:member).
             where('created_at > ?', start_at).
             order('id DESC').page(params[:page]).per(20)
+
       end
 
       def update
