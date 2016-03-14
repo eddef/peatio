@@ -12,6 +12,7 @@ module Admin
       end
 
       def find_withdraw
+        raise params[:type].inspect
         w = channel.kls.find(params[:id])
         self.instance_variable_set("@#{self.controller_name.singularize}", w)
         if w.may_process? and (w.amount > w.account.locked)
