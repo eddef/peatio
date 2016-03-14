@@ -24,7 +24,7 @@ module Admin
       end
 
       def find_withdraws
-        currency_id = Currency.where(key: params[:type]).first.pluck(:id)
+        currency_id = Currency.where(code: params[:type]).first.id
         @coins = Withdraw.where(currency: currency_id)
       end
 
