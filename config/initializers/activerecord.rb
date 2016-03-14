@@ -45,19 +45,15 @@ end
 Currency.all.each do |currency|
   if currency.coin?
 
-    klass = Class.new Coindeposit
-    Deposits.const_set currency.key.capitalize, klass
+    Object.const_set("Deposits::#{currency.key.capitalize}", Class.new(Coindeposit))
 
-    klass = Class.new Coinwithdraw
-    Withdraws.const_set currency.key.capitalize, klass
+    Object.const_set("Withdraws::#{currency.key.capitalize}", Class.new(Coinwithdraw))
 
   else
 
-    klass = Class.new Bankdeposit
-    Deposits.const_set currency.key.capitalize, klass
+    Object.const_set("Deposits::#{currency.key.capitalize}", Class.new(Bankdeposit))
 
-    klass = Class.new Bankwithdraw
-    Withdraws.const_set currency.key.capitalize, klass
+    Object.const_set("Withdraws::#{currency.key.capitalize}", Class.new(Bankwithdraw))
 
   end
 end
