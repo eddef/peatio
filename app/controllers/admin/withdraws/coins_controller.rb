@@ -1,6 +1,6 @@
 module Admin
   module Withdraws
-    class CoinController < ::Admin::Withdraws::BaseController
+    class CoinsController < ::Admin::Withdraws::BaseController
       load_and_authorize_resource :class => '::Withdraws::Satoshi'
 
       def index
