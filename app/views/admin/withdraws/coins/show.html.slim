@@ -18,9 +18,6 @@
           = item_for @coin, :remark
           hr.split
           ul.list-inline.pull-right
-            /!- if @coin.may_reject?
-              li
-                = link_to t('admin.withdraws.reject_coin'), url_for([:admin, @coin]), class: 'btn btn-danger', method: 'DELETE', confirm: t('admin.withdraws.reject_confirm_coin')
             - if @coin.may_process?
               li
                 = link_to t('admin.withdraws.process_coin'), url_for([:admin, @coin]), class: 'btn btn-primary', method: 'PATCH'
