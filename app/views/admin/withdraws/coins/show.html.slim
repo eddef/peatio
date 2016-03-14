@@ -21,7 +21,7 @@
             - if @coin.may_reject?
               li
                 = link_to t('.reject'), url_for([:admin, @coin]), class: 'btn btn-danger', method: 'DELETE', confirm: t('.reject_confirm')
-            - if @satoshi.may_process?
+            - if @coin.may_process?
               li
                 = link_to t('.process'), url_for([:admin, @coin]), class: 'btn btn-primary', method: 'PATCH'
 
