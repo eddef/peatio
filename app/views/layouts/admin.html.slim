@@ -32,7 +32,8 @@ html lang="en"
               ul.dropdown-menu
                 - DepositChannel.all.sort.each do |c|
                   - if can? :manage, c.kls
-                    li = link_to c.title_text, [:admin, c.kls]
+                    //li = link_to c.title_text, [:admin, c.kls]
+                    li = link_to c.title_text, admin_deposits_coins_path( type: c.key )
 
           - if can? :menu, Withdraw
             li.dropdown class = check_active('withdraws')

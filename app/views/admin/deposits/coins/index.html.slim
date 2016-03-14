@@ -1,4 +1,4 @@
-= table_for(@satoshis, class: 'table table-condensed table-hover') do |t|
+= table_for(@coins, class: 'table table-condensed table-hover') do |t|
   - t.column :txid do |x|
     a href='#{x.blockchain_url}' target='_blank'
       code.text-info = x.txid.truncate(36)
@@ -16,4 +16,4 @@
       span = ' / '
       = link_to t('.accept'), url_for([:admin, x]), method: 'PATCH', confirm: t('.accept_confirm')
 
-.pull-right = paginate @satoshis
+.pull-right = paginate @coins

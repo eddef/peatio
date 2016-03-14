@@ -2,7 +2,7 @@
   .col-xs-12
     .panel.panel-primary
       .panel-heading
-        span = t('.withdraw', sn: @satoshi.id)
+        span = t('.withdraw', sn: @coin.id)
       .panel-body
         = description_for :withdraw do
           = item_for @satoshi, :id
