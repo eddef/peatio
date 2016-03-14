@@ -47,7 +47,6 @@ Currency.all.each do |currency|
 
     klass = Class.new Coindeposit
     Deposits.const_set currency.key.capitalize, klass
-    raise AASM::StateMachine[currency.key.capitalize].inspect
 
     klass = Class.new Coinwithdraw
     Withdraws.const_set currency.key.capitalize, klass
