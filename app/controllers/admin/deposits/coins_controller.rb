@@ -1,7 +1,7 @@
 module Admin
   module Deposits
     class CoinsController < ::Admin::BaseController
-      load_and_authorize_resource :class => "::Deposits::#{params[:type].capitalize}".constantize
+      #load_and_authorize_resource :class => "::Deposits::#{params[:type].capitalize}".constantize
 
       before_action :find_deposits, only: [:index]
       before_action :find_deposit, only: [:show, :update]
