@@ -4,7 +4,7 @@ module Admin
       load_and_authorize_resource :class => '::Withdraws::Satoshi'
 
       def index
-        raise params[:type].inspect
+        raise params.inspect
         start_at = DateTime.now.ago(60 * 60 * 24)
         @one_satoshis = @satoshis.with_aasm_state(:accepted).order("id DESC")
         @all_satoshis = @satoshis.without_aasm_state(:accepted).where('created_at > ?', start_at).order("id DESC")
