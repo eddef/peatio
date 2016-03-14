@@ -45,19 +45,14 @@ end
 Currency.all.each do |currency|
   if currency.coin?
 
-    klass = Class.new Coindeposit
-    Deposits.const_set currency.key.capitalize, klass
+    eval %Q{class Deposits::#{currency.key.capitalize} < Coindeposit; end; }
+    eval %Q{class Withdraws::#{currency.key.capitalize} < Coinwithdraw; end; }
 
-    klass = Class.new Coinwithdraw
-    Withdraws.const_set currency.key.capitalize, klass
 
   else
 
-    klass = Class.new Bankdeposit
-    Deposits.const_set currency.key.capitalize, klass
-
-    klass = Class.new Bankwithdraw
-    Withdraws.const_set currency.key.capitalize, klass
+    eval %Q{class Deposits::#{currency.key.capitalize} < Bankdeposit; end; }
+    eval %Q{class Withdraws::#{currency.key.capitalize} < Bankwithdraw; end; }
 
   end
 end
