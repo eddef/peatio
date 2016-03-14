@@ -9,6 +9,7 @@ module Admin
       def find_deposits
         currency_id = Currency.where(key: params[:type]).first.id
         @coins = Deposit.where(currency: currency_id)
+        raise @coins.inspect
       end
 
       def find_deposit
