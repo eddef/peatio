@@ -30,6 +30,7 @@ module Admin
 
       def index
         start_at = DateTime.now.ago(60 * 60 * 24)
+        @currency = params[:type]
         @one_coin = @coins.with_aasm_state(:accepted).order("id DESC")
         @all_coins = @coins.without_aasm_state(:accepted).where('created_at > ?', start_at).order("id DESC")
       end
