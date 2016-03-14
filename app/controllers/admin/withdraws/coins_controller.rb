@@ -1,7 +1,7 @@
 module Admin
   module Withdraws
     class CoinsController < ::Admin::BaseController
-      load_and_authorize_resource :class => "::Withdraws::#{ params[:type].capitalize }"
+      #load_and_authorize_resource :class => "::Withdraws::#{ params[:type].capitalize }"
 
       before_action :find_withdraw, only: [:show, :update, :destroy]
 
