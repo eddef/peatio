@@ -15,7 +15,7 @@ module Admin
       end
 
       def find_withdraw
-        @coin = channel.kls.find(params[:id])
+        @coin = kls.find(params[:id])
 
         if @coin.may_process? and (@coin.amount > @coin.account.locked)
           flash[:alert] = 'TECH ERROR !!!!'
