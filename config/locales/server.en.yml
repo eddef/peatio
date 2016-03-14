@@ -1256,9 +1256,9 @@ en:
       empty_coin: No data
       process_coin: Accepted
       succeed_coin: Withdraw
-      reject_coin: Reject
       succeed_confirm_coin: Process withdrawal?
       reject_confirm_coin: Reject withdrawal?
+      reject_coin: Reject
       withdraw: Withdrawals
       banks:
         index:
