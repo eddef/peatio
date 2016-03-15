@@ -19,16 +19,11 @@ module Admin
         @channel ||= DepositChannel.find_by_key(params[:type])
       end
 
-      def kls
-        channel.kls
-      end
 
       def index
-        start_at = DateTime.now.ago(60 * 60 * 24 * 365)
         @coins = @coins.includes(:member).
-            where('created_at > ?', start_at).
+            where('created_at > ?', 365.days.ago).
             order('id DESC').page(params[:page]).per(20)
-
       end
 
       def update

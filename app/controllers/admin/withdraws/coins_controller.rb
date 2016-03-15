@@ -10,10 +10,6 @@ module Admin
         @channel ||= WithdrawChannel.find_by_key(params[:type])
       end
 
-      def kls
-        channel.kls
-      end
-
       def find_withdraw
         channel
         @coin = @channel.kls.find(params[:id])
@@ -30,10 +26,9 @@ module Admin
       end
 
       def index
-        start_at = DateTime.now.ago(60 * 60 * 24)
         @currency = params[:type]
         @one_coin = @coins.with_aasm_state(:accepted).order("id DESC")
-        @all_coins = @coins.without_aasm_state(:accepted).where('created_at > ?', start_at).order("id DESC")
+        @all_coins = @coins.without_aasm_state(:accepted).where('created_at > ?', 24.hours.ago).order("id DESC")
       end
 
       def show

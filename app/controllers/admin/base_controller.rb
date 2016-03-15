@@ -16,6 +16,11 @@ module Admin
         redirect_to two_factors_path
       end
     end
+
+    def kls
+      channel.kls
+    end
+
   end
 end
 

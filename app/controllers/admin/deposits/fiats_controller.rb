@@ -7,14 +7,9 @@ module Admin
         @channel ||= DepositChannel.find_by_key(params[:type])
       end
 
-      def kls
-        channel.kls
-      end
-
       def index
-        start_at = DateTime.now.ago(60 * 60 * 24)
         @oneday_banks = @banks.includes(:member).
-            where('created_at > ?', start_at).
+            where('created_at > ?', 24.hours.ago).
             order('id DESC')
 
         @available_banks = @banks.includes(:member).
