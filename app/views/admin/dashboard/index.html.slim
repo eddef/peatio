@@ -16,16 +16,16 @@
             - @currencies_summary.each do |c|
               tr
                 td: b = c[:name]
-                td.text-right = c[:locked]
-                td.text-right = c[:balance]
-                td.text-right = c[:sum]
+                td.text-right = c[:locked].round(8)
+                td.text-right = c[:balance].round(8)
+                td.text-right = c[:sum].round(8)
 
                 - if c[:coinable]
-                  td.text-right = c[:hot]
+                  td.text-right = c[:hot].round(8)
                   - if c[:hot] == 'N/A'
-                    td.text-right = c[:hot]
+                    td.text-right = c[:hot].round(8)
                   - else
-                    td.text-right = c[:sum].to_f - c[:hot].to_f
+                    td.text-right = (c[:sum].to_f - c[:hot].to_f).round(8)
                 - else
                   td.text-right N/A
                   td.text-right N/A
