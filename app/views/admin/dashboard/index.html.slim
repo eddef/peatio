@@ -21,7 +21,7 @@
                 td.text-right = c[:sum].to_f.round(8)
 
                 - if c[:coinable]
-                  td.text-right = c[:hot].is_a?(String) ? c[:hot] : c[:hot].to_f.round(8)
+                  td.text-right = (c[:hot].is_a?(String) and c[:hot] == 'N/A') ? c[:hot] : c[:hot].to_f.round(8)
                   - if c[:hot] == 'N/A'
                     td.text-right = c[:hot]
                   - else
