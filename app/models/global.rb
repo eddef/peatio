@@ -56,6 +56,7 @@ class Global
   end
 
   def ticker
+    Rails.logger.debug "Processing ---------#{currency}---------- ticker"
     ticker           = Rails.cache.read("peatio:#{currency}:ticker") || default_ticker
     open = Rails.cache.read("peatio:#{currency}:ticker:open") || ticker[:last]
     best_buy_price   = bids.first && bids.first[0] || ZERO
