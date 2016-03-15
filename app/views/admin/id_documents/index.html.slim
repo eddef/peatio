@@ -4,7 +4,7 @@
     - t.column :id, class: 'col-xs-1' do |x|
       = link_to x.id, admin_id_document_path(x)
     - t.column :name, class: 'col-xs-2' do |x|
-      = link_to x.name.to_s, admin_member_path(x.member)
+      = link_to x.name.to_s, admin_member_path(id: x.member.id)
     - t.column :email, class: 'col-xs-2' do |x|
       = link_to x.member.email, admin_member_path(id: x.member.id)
     - t.column :id_document_type, t('.id_document_type'), class: 'col-xs-3' do |x|
