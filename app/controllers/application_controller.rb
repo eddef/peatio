@@ -193,7 +193,7 @@ class ApplicationController < ActionController::Base
       }
       memo
     end
-    gon.fiat_currency = 'cny'
+    gon.fiat_currency = 'byr'
 
     gon.tickers = {}
     Market.all.each do |market|
