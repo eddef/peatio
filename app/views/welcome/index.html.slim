@@ -25,9 +25,5 @@ header.text-center
               div.thumbnail.white.tickerbox
                 div.caption
                   = ticker[1][:name]
-                div = 'Last Price'
-                  strong
-                    = ticker[1][:last]
-                div = 'Volume'
-                  strong
-                    = ticker[1][:volume]
+                div = "Last price: #{ticker[1][:last]}"
+                div = "Volume: #{ticker[1][:volume]}"
