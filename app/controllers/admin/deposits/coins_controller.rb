@@ -16,7 +16,7 @@ module Admin
       end
 
       def channel
-        @channel ||= DepositChannel.find_by_key(self.controller_name.singularize)
+        @channel ||= DepositChannel.find_by_key(params[:type])
       end
 
       def kls
