@@ -43,6 +43,8 @@ window.GlobalData = flight.component ->
       @.last_tickers = data
 
     tickers = for market, ticker of data
+      if _.isUndefined @.last_tickers[market]
+        continue
       buy = parseFloat(ticker.buy)
       sell = parseFloat(ticker.sell)
       last = parseFloat(ticker.last)
