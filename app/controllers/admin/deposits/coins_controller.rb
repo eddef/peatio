@@ -19,7 +19,6 @@ module Admin
         @channel ||= DepositChannel.find_by_key(params[:type])
       end
 
-
       def index
         @coins = @coins.includes(:member).
             where('created_at > ?', 365.days.ago).
