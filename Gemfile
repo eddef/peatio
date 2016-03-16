@@ -100,3 +100,15 @@ group :test do
   # but test-unit has been removed from ruby core since 2.2.0
   gem 'test-unit'
 end
+
+group :development do
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+#  gem 'capistrano-rvm'
+  gem 'capistrano-postgresql'
+  gem 'capistrano-safe-deploy-to'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rails-console'
+  gem 'rvm1-capistrano3', require: false
+end

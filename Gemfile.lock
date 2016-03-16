@@ -80,6 +80,25 @@ GEM
       debugger-linecache (~> 1.2)
     callsite (0.0.11)
     cancancan (1.7.1)
+    capistrano (3.4.0)
+      i18n
+      rake (>= 10.0.0)
+      sshkit (~> 1.3)
+    capistrano-bundler (1.1.4)
+      capistrano (~> 3.1)
+      sshkit (~> 1.2)
+    capistrano-postgresql (4.2.1)
+      capistrano (>= 3.0)
+    capistrano-rails (1.1.6)
+      capistrano (~> 3.1)
+      capistrano-bundler (~> 1.1)
+    capistrano-rails-console (1.0.2)
+      capistrano (>= 3.1.0, < 4.0.0)
+    capistrano-safe-deploy-to (1.1.1)
+      capistrano (>= 3.0)
+    capistrano3-puma (1.2.1)
+      capistrano (~> 3.0)
+      puma (>= 2.6)
     capybara (2.4.4)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -236,6 +255,9 @@ GEM
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     mysql2 (0.3.15)
+    net-scp (1.2.1)
+      net-ssh (>= 2.6.5)
+    net-ssh (3.0.2)
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
     oauth2 (1.0.0)
@@ -277,6 +299,7 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.2)
       pry (>= 0.9.10)
+    puma (3.1.0)
     pusher (0.12.0)
       httpclient (~> 2.3.0)
       multi_json (~> 1.0)
@@ -351,6 +374,9 @@ GEM
       json (>= 1.7.5)
       structured_warnings (>= 0.1.3)
     rubyzip (1.1.0)
+    rvm1-capistrano3 (1.4.0)
+      capistrano (~> 3.0)
+      sshkit (>= 1.2)
     sass (3.2.19)
     sass-rails (4.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -388,6 +414,9 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
+    sshkit (1.9.0)
+      net-scp (>= 1.1.2)
+      net-ssh (>= 2.8.0)
     structured_warnings (0.1.4)
     temple (0.6.7)
     test-unit (3.0.8)
@@ -439,6 +468,13 @@ DEPENDENCIES
   bunny (~> 1.2.1)
   byebug
   cancancan
+  capistrano
+  capistrano-bundler
+  capistrano-postgresql
+  capistrano-rails
+  capistrano-rails-console
+  capistrano-safe-deploy-to
+  capistrano3-puma
   capybara
   carrierwave (~> 0.10.0)
   coffee-rails
@@ -495,6 +531,7 @@ DEPENDENCIES
   redis-rails
   rotp
   rspec-rails
+  rvm1-capistrano3
   sass-rails
   selenium-webdriver
   shoulda-matchers

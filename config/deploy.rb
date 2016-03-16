@@ -1,16 +1,36 @@
-require 'mina/bundler'
-require 'mina/rails'
-require 'mina/git'
-require 'mina/rbenv'
-require 'mina/slack/tasks'
+# config valid only for current version of Capistrano
+lock '3.4.0'
 
-set :repository, 'https://github.com/peatio/peatio.git'
-set :user, 'deploy'
-set :deploy_to, '/home/deploy/peatio'
-set :branch, 'master'
-set :domain, 'demo.peatio.com'
+set :application, 'peatio'
+set :repo_url, 'git@github.com:eddef/peatio.git'
 
-set :shared_paths, [
+set :rvm_type, :user
+set :rvm_ruby_version, '2.2.1'
+
+# Default branch is :master
+# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+set :branch, `git branch | grep "*" | sed "s/* //" | awk '{printf $0}'`
+
+# Default deploy_to directory is /var/www/my_app_name
+set :deploy_to, '/home/deploy/peatio-cap'
+
+set :nginx_sites_available_path, "/etc/nginx/sites-available"
+set :nginx_sites_enabled_path, "/etc/nginx/sites-enabled"
+
+# Default value for :scm is :git
+# set :scm, :git
+
+# Default value for :format is :pretty
+# set :format, :pretty
+
+# Default value for :log_level is :debug
+# set :log_level, :debug
+
+# Default value for :pty is false
+# set :pty, true
+
+# Default value for :linked_files is []
+set :linked_files, fetch(:linked_files, []).push(
   'config/database.yml',
   'config/application.yml',
   'config/currencies.yml',
@@ -18,105 +38,30 @@ set :shared_paths, [
   'config/amqp.yml',
   'config/banks.yml',
   'config/deposit_channels.yml',
-  'config/withdraw_channels.yml',
-  'public/uploads',
-  'tmp',
-  'log'
-]
+  'config/withdraw_channels.yml'
+)
 
-task :environment do
-  invoke :'rbenv:load'
-end
+# Default value for linked_dirs is []
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 
-task :setup => :environment do
-  queue! %[mkdir -p "#{deploy_to}/shared/log"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/log"]
+# Default value for default_env is {}
+# set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
-  queue! %[mkdir -p "#{deploy_to}/shared/config"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/config"]
+# Default value for keep_releases is 5
+# set :keep_releases, 5
 
-  queue! %[mkdir -p "#{deploy_to}/shared/tmp"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/tmp"]
+before 'deploy', 'rvm1:install:rvm'
+before 'deploy', 'rvm1:install:ruby'
 
-  queue! %[mkdir -p "#{deploy_to}/shared/public/uploads"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/public/uploads"]
+namespace :deploy do
 
-  queue! %[touch "#{deploy_to}/shared/config/database.yml"]
-  queue! %[touch "#{deploy_to}/shared/config/currencies.yml"]
-  queue! %[touch "#{deploy_to}/shared/config/application.yml"]
-  queue! %[touch "#{deploy_to}/shared/config/markets.yml"]
-  queue! %[touch "#{deploy_to}/shared/config/amqp.yml"]
-  queue! %[touch "#{deploy_to}/shared/config/banks.yml"]
-  queue! %[touch "#{deploy_to}/shared/config/deposit_channels.yml"]
-  queue! %[touch "#{deploy_to}/shared/config/withdraw_channels.yml"]
-end
-
-desc "Deploys the current version to the server."
-task deploy: :environment do
-  deploy do
-    invoke :'git:clone'
-    invoke :'deploy:link_shared_paths'
-    invoke :'bundle:install'
-    invoke :'rails:db_migrate'
-    invoke :'rails:touch_client_i18n_assets'
-    invoke :'rails:assets_precompile'
-
-    to :launch do
-      invoke :'passenger:restart'
+  after :restart, :clear_cache do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+      # Here we can do anything such as:
+      # within release_path do
+      #   execute :rake, 'cache:clear'
+      # end
     end
   end
-end
 
-namespace :passenger do
-  desc "Restart Passenger"
-  task :restart do
-    queue %{
-      echo "-----> Restarting passenger"
-      cd #{deploy_to}/current
-      #{echo_cmd %[mkdir -p tmp]}
-      #{echo_cmd %[touch tmp/restart.txt]}
-    }
-  end
-end
-
-namespace :rails do
-  task :touch_client_i18n_assets do
-    queue %[
-      echo "-----> Touching clint i18n assets"
-      #{echo_cmd %[RAILS_ENV=production bundle exec rake deploy:touch_client_i18n_assets]}
-    ]
-  end
-end
-
-namespace :daemons do
-  desc "Start Daemons"
-  task start: :environment do
-    queue %{
-      cd #{deploy_to}/current
-      RAILS_ENV=production bundle exec ./bin/rake daemons:start
-      echo Daemons START DONE!!!
-    }
-  end
-
-  desc "Stop Daemons"
-  task stop: :environment do
-    queue %{
-      cd #{deploy_to}/current
-      RAILS_ENV=production bundle exec ./bin/rake daemons:stop
-      echo Daemons STOP DONE!!!
-    }
-  end
-
-  desc "Query Daemons"
-  task status: :environment do
-    queue %{
-      cd #{deploy_to}/current
-      RAILS_ENV=production bundle exec ./bin/rake daemons:status
-    }
-  end
-end
-
-desc "Generate liability proof"
-task 'solvency:liability_proof' do
-  queue "cd #{deploy_to}/current && RAILS_ENV=production bundle exec rake solvency:liability_proof"
 end
