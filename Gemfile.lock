@@ -524,6 +524,7 @@ DEPENDENCIES
   phonelib (~> 0.3.5)
   poltergeist
   pry-rails
+  puma
   pusher
   quiet_assets
   rack-attack (~> 3.0.0)

@@ -102,6 +102,8 @@ group :test do
   gem 'test-unit'
 end
 
+gem 'puma', group: :production
+
 group :development do
   gem 'capistrano'
   gem 'capistrano-rails'
