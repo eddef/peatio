@@ -4,6 +4,7 @@ gem 'rails', '~> 4.0.12'
 gem 'rails-i18n'
 
 gem 'mysql2'
+gem 'pg'
 gem 'daemons-rails'
 gem 'redis-rails'
 
@@ -105,10 +106,10 @@ group :development do
   gem 'capistrano'
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
-#  gem 'capistrano-rvm'
+  gem 'capistrano-rvm'
   gem 'capistrano-postgresql'
   gem 'capistrano-safe-deploy-to'
   gem 'capistrano3-puma'
   gem 'capistrano-rails-console'
-  gem 'rvm1-capistrano3', require: false
+#  gem 'rvm1-capistrano3', require: false
 end

@@ -6,6 +6,7 @@ set :repo_url, 'git@github.com:eddef/peatio.git'
 
 set :rvm_type, :user
 set :rvm_ruby_version, '2.2.1'
+set :rvm_custom_path, '~/.rvm'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -36,9 +37,7 @@ set :linked_files, fetch(:linked_files, []).push(
   'config/currencies.yml',
   'config/markets.yml',
   'config/amqp.yml',
-  'config/banks.yml',
-  'config/deposit_channels.yml',
-  'config/withdraw_channels.yml'
+  'config/banks.yml'
 )
 
 # Default value for linked_dirs is []
@@ -49,9 +48,6 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
-
-before 'deploy', 'rvm1:install:rvm'
-before 'deploy', 'rvm1:install:ruby'
 
 namespace :deploy do
 

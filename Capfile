@@ -15,11 +15,10 @@ require 'capistrano/deploy'
 #   https://github.com/capistrano/rails
 #   https://github.com/capistrano/passenger
 #
-#require 'capistrano/rvm'
+require 'capistrano/rvm'
 # require 'capistrano/rbenv'
 # require 'capistrano/chruby'
 require 'capistrano/bundler'
-require 'rvm1/capistrano3'
 require 'capistrano/rails/assets'
 require 'capistrano/rails/migrations'
 require 'capistrano/safe_deploy_to'
