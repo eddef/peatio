@@ -21,7 +21,7 @@ role :app, %w{deploy@otc.sicanet.net}
 role :web, %w{deploy@otc.sicanet.net}
 role :db,  %w{deploy@otc.sicanet.net}, primary: true
 
-
+set :nginx_server_name, 'otc.sicanet.net'
 
 # Configuration
 # =============
