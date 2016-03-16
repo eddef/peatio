@@ -37,7 +37,8 @@ set :linked_files, fetch(:linked_files, []).push(
   'config/currencies.yml',
   'config/markets.yml',
   'config/amqp.yml',
-  'config/banks.yml'
+  'config/banks.yml',
+  'puma.rb'
 )
 
 # Default value for linked_dirs is []
