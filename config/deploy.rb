@@ -1,7 +1,7 @@
 # config valid only for current version of Capistrano
 lock '3.4.0'
-#namespace :deploy do
-#  on roles(:app) do
+namespace :deploy do
+  on roles(:app) do
     set :application, 'peatio'
     set :repo_url, 'git@github.com:eddef/peatio.git'
 
@@ -28,8 +28,8 @@ lock '3.4.0'
 
     set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 
-#  end
-#end
+  end
+end
 
 namespace :deploy do
   task :restart_daemons do
