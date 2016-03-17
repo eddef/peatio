@@ -6,4 +6,4 @@ role :db,  %w{exchanger@212.125.247.42}, primary: true
 
 set :nginx_server_name, '212.125.247.41'
 
-set :branch, fetch(:branch, "production")
+#set :branch, fetch(:branch, "production")

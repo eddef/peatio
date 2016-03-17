@@ -5,7 +5,6 @@ namespace :deploy do
   on roles(:app) do
     set :application, 'peatio'
     set :repo_url, 'git@github.com:eddef/peatio.git'
-    set :repository, 'git@github.com:eddef/peatio.git'
 
     set :rvm_type, :user
     set :rvm_ruby_version, '2.2.1'
