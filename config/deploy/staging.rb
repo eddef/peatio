@@ -23,8 +23,6 @@ role :db,  %w{deploy@otc.sicanet.net}, primary: true
 
 set :nginx_server_name, 'otc.sicanet.net'
 
-set :branch, fetch(:branch, "master")
-
 # Configuration
 # =============
 # You can set any configuration variable like in config/deploy.rb
