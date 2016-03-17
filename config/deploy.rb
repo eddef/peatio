@@ -9,7 +9,7 @@ lock '3.4.0'
     set :rvm_ruby_version, '2.2.1'
     set :rvm_custom_path, '~/.rvm'
 
-    set :branch, `git branch | grep "*" | sed "s/* //" | awk '{printf $0}'`
+    #set :branch, `git branch | grep "*" | sed "s/* //" | awk '{printf $0}'`
 
     set :deploy_to, '~/peatio-cap'
 
