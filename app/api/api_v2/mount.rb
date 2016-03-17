@@ -19,7 +19,7 @@ module APIv2
     use APIv2::Auth::Middleware
 
     include Constraints
-    include ExceptionHandlers
+    include APIv2::ExceptionHandlers
 
     before do
       header 'Access-Control-Allow-Origin', '*'
