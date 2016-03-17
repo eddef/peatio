@@ -113,5 +113,5 @@ group :development do
   gem 'capistrano-safe-deploy-to'
   gem 'capistrano3-puma'
   gem 'capistrano-rails-console'
-  gem 'rvm1-capistrano3', require: false
+#  gem 'rvm1-capistrano3', require: false
 end
