@@ -15,7 +15,7 @@ set :rvm_type, :user
 set :rvm_ruby_version, '2.2.1'
 set :rvm_custom_path, '~/.rvm'
 
-set :deploy_to, '~/peatio-cap'
+set :deploy_to, '/home/exchanger/peatio-cap'
 
 set :nginx_sites_available_path, "/etc/nginx/sites-available"
 set :nginx_sites_enabled_path, "/etc/nginx/sites-enabled"
