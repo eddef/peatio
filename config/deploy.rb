@@ -1,5 +1,6 @@
 # config valid only for current version of Capistrano
 lock '3.4.0'
+set :branch, `git branch | grep "*" | sed "s/* //" | awk '{printf $0}'`
 namespace :deploy do
   on roles(:app) do
     set :application, 'peatio'
@@ -9,8 +10,6 @@ namespace :deploy do
     set :rvm_type, :user
     set :rvm_ruby_version, '2.2.1'
     set :rvm_custom_path, '~/.rvm'
-
-    set :branch, `git branch | grep "*" | sed "s/* //" | awk '{printf $0}'`
 
     set :deploy_to, '~/peatio-cap'
 
