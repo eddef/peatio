@@ -4,7 +4,11 @@ set :rails_env, 'production'
 
 role :app, %w{exchanger@212.125.247.41}
 role :web, %w{exchanger@212.125.247.41}
-#role :db,  %w{exchanger@212.125.247.42}, primary: true
+role :db,  %w{exchanger@212.125.247.42}, primary: true
+
+server '212.125.247.41', user: 'exchanger', roles: %w{web}, no_release: true
+server '212.125.247.41', user: 'exchanger', roles: %w{app}
+server '212.125.247.42', user: 'exchanger', roles: %w{db}
 
 set :nginx_server_name, 'freiexchange.com'
 
@@ -19,6 +23,7 @@ set :deploy_to, '/home/exchanger/peatio-cap'
 
 set :nginx_sites_available_path, "/etc/nginx/sites-available"
 set :nginx_sites_enabled_path, "/etc/nginx/sites-enabled"
+
 
 set :linked_files, fetch(:linked_files, []).push(
     'config/database.yml',
