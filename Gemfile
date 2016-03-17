@@ -4,7 +4,7 @@ gem 'rails', '~> 4.0.12'
 gem 'rails-i18n'
 
 gem 'mysql2'
-gem 'pg'
+#gem 'pg'
 gem 'daemons-rails'
 gem 'redis-rails'
 

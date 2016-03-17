@@ -23,39 +23,28 @@ role :db,  %w{deploy@otc.sicanet.net}, primary: true
 
 set :nginx_server_name, 'otc.sicanet.net'
 
-# Configuration
-# =============
-# You can set any configuration variable like in config/deploy.rb
-# These variables are then only loaded and set in this stage.
-# For available Capistrano configuration variables see the documentation page.
-# http://capistranorb.com/documentation/getting-started/configuration/
-# Feel free to add new variables to customise your setup.
+set :application, 'peatio'
+set :repo_url, 'git@github.com:eddef/peatio.git'
 
+set :rvm_type, :user
+set :rvm_ruby_version, '2.2.1'
+set :rvm_custom_path, '~/.rvm'
 
+#set :branch, `git branch | grep "*" | sed "s/* //" | awk '{printf $0}'`
 
-# Custom SSH Options
-# ==================
-# You may pass any option but keep in mind that net/ssh understands a
-# limited set of options, consult the Net::SSH documentation.
-# http://net-ssh.github.io/net-ssh/classes/Net/SSH.html#method-c-start
-#
-# Global options
-# --------------
-#  set :ssh_options, {
-#    keys: %w(/home/rlisowski/.ssh/id_rsa),
-#    forward_agent: false,
-#    auth_methods: %w(password)
-#  }
-#
-# The server-based syntax can be used to override options:
-# ------------------------------------
-# server 'example.com',
-#   user: 'user_name',
-#   roles: %w{web app},
-#   ssh_options: {
-#     user: 'user_name', # overrides user setting above
-#     keys: %w(/home/user_name/.ssh/id_rsa),
-#     forward_agent: false,
-#     auth_methods: %w(publickey password)
-#     # password: 'please use keys'
-#   }
+set :deploy_to, '~/peatio-cap'
+
+set :nginx_sites_available_path, "/etc/nginx/sites-available"
+set :nginx_sites_enabled_path, "/etc/nginx/sites-enabled"
+
+set :linked_files, fetch(:linked_files, []).push(
+    'config/database.yml',
+    'config/application.yml',
+    'config/currencies.yml',
+    'config/markets.yml',
+    'config/amqp.yml',
+    'config/banks.yml',
+    'puma.rb'
+)
+
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
